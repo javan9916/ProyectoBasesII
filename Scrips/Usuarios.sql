@@ -24,3 +24,5 @@ BEGIN
 END
 
 EXECUTE Agregar_Usuario @usuario = 'roberto', @contraseña = '123', @direccion_ip = '126.123.64.7', @puerto = 500
+
+go

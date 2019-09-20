@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { AdminComponent } from './admin/admin.component';
 import { MonitorComponent } from './monitor/monitor.component';
 
 const routes: Routes = [
-  {
-    path: '', redirectTo: 'monitor', pathMatch: 'full'
-},
-{
-  path: 'monitor', component: MonitorComponent
-}
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
+    { path: 'admin', component: AdminComponent },
+    { path: 'monitor', component: MonitorComponent },
+    { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({
