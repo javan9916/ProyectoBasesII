@@ -1,4 +1,4 @@
-DROP TABLE Usuarios
+--DROP TABLE Usuarios
 CREATE TABLE Usuarios
 (
 	usuario			VARCHAR(50) PRIMARY KEY NOT NULL,
@@ -12,15 +12,18 @@ CREATE TABLE Usuarios
 )
 
 SELECT * FROM Usuarios;
-
----DROP PROCEDURE Agregar_Usuario
-
+go
 CREATE PROCEDURE Agregar_Usuario
-@usuario VARCHAR(50), @contraseña VARCHAR(20), @direccion_ip VARCHAR(15), @puerto INT
+@usuario VARCHAR(50), 
+@contraseña VARCHAR(20), 
+@direccion_ip VARCHAR(15), 
+@puerto INT
 AS
 BEGIN
 	INSERT INTO Usuarios(usuario, contraseña, direccion_ip, puerto)
 	VALUES (@usuario, @contraseña, @direccion_ip, @puerto)
 END
 
-EXECUTE Agregar_Usuario @usuario = 'roberto', @contraseña = '123', @direccion_ip = '126.123.64.7', @puerto = 500
+EXECUTE Agregar_Usuario @usuario = 'roberto', @contraseña = '123', @direccion_ip = '126.123.64.7', @puerto = 5
+go
+	
