@@ -6,12 +6,19 @@ table {
     width: 100%;
 }
 
-.mat-select {
+.mat-form-field {
+    padding-left: 16px; 
     width: 100%;
 }
 
-.button-tile {
-    margin-left:auto;
-    margin-right:0;
+button {
+    margin-left: auto;
+    margin-right:18px;
 }
+
+.actions-col{
+    text-align: right !important;
+    justify-content: flex-end !important;
+  }
+  
   

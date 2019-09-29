@@ -1,7 +1,7 @@
 <div class="content">
   <h2>Gestor de Almacenamiento de Bases de Datos</h2>
-  <mat-grid-list cols="2" rowHeight="100px">
-    <mat-grid-tile colspan="1" rowspan="1">
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile colspan="2" rowspan="1">
       <mat-form-field>
         <mat-label>Bases de datos</mat-label>
         <mat-select>
@@ -12,40 +12,60 @@
           <mat-option value="bd5">BD 5</mat-option>
         </mat-select>
       </mat-form-field>
+      <button mat-icon-button color="primary" aria-label="Add button" (click)="openDialog('Agregar BD')">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+
     </mat-grid-tile>
     <mat-grid-tile colspan="1" rowspan="1" class="button-tile">
-      <button mat-flat-button color="primary">Primary</button>
-      <button mat-flat-button color="primary">Primary</button>
+      <button mat-flat-button color="primary">
+        Agregar Filegroups
+      </button>
+      <button mat-flat-button color="primary">
+        Agregar Discos
+      </button>
     </mat-grid-tile>
   </mat-grid-list>
-  
 
   <mat-card>
     <table mat-table  class="mat-elevation-z8">
     
-      <!-- Position Column -->
+      <!-- Columna Tamaño -->
       <ng-container matColumnDef="tamano">
         <th mat-header-cell *matHeaderCellDef> Tamaño </th>
         <td mat-cell *matCellDef="let element"> {{element.tamano}} </td>
       </ng-container>
     
-      <!-- Name Column -->
+      <!-- Columna Crecimiento -->
       <ng-container matColumnDef="crecimiento">
         <th mat-header-cell *matHeaderCellDef> Crecimiento </th>
         <td mat-cell *matCellDef="let element"> {{element.crecimiento}} </td>
       </ng-container>
     
-      <!-- Weight Column -->
+      <!-- Columna Tamaño máximo -->
       <ng-container matColumnDef="maximo">
         <th mat-header-cell *matHeaderCellDef> Tamaño máximo </th>
         <td mat-cell *matCellDef="let element"> {{element.maximo}} </td>
       </ng-container>
     
-      <!-- Symbol Column -->
+      <!-- Columna Porcentaje de uso -->
       <ng-container matColumnDef="uso">
         <th mat-header-cell *matHeaderCellDef> Porcentaje de uso </th>
         <td mat-cell *matCellDef="let element"> {{element.uso}}% </td>
       </ng-container>
+
+      <!-- Columna Acciones -->
+      <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let row" class="actions-col">
+            <button class="editButton" mat-icon-button (click)="openDialog(row, 'Editar')"
+              matTooltip="Editar el conjunto" matTooltipPosition="above">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
     
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

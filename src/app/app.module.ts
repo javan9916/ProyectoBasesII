@@ -20,14 +20,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { DialogBoxComponent } from './admin/dialog-box/dialog-box.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     MonitorComponent,
     LoginComponent,
-    AdminComponent
-  ],
+    AdminComponent,
+    DialogBoxComponent
+  ], entryComponents: [DialogBoxComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,6 +46,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatSelectModule,
     MatTableModule,
     MatGridListModule,
+    MatIconModule,
+    MatDialogModule,
     HttpClientModule,
     HttpModule,
   ],

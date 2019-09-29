@@ -1,0 +1,24 @@
+.cancelButton{
+    color:#d9534f;
+    color: white;
+}
+
+.addButton {
+    background-color: #4CAF50;
+    color:white;
+}
+
+mat-form-field, input {
+    font-size: 14px;
+    width: 100%;
+}
+
+button {
+    margin-left:auto;
+    margin-right:0;
+}
+
+mat-dialog-actions {
+    margin-left:auto;
+    margin-right:0;
+}

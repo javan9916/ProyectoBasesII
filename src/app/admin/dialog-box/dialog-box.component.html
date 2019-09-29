@@ -1,0 +1,34 @@
+<h1 mat-dialog-title><strong>{{action}}</strong></h1>
+<div mat-dialog-content [formGroup]="form">
+  <div *ngIf="action == 'Agregar BD'">
+    <mat-form-field>
+      <input placeholder="Nombre Base de Datos" matInput formControlName="nombreBD">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input placeholder="Nombre FileGroup" matInput formControlName="nombreFG">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input placeholder="Ubicación FileGroup" matInput formControlName="ubicacionFG">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input placeholder="Tamaño" matInput formControlName="tamaño">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input placeholder="Crecimiento" matInput formControlName="crecimiento">
+    </mat-form-field>
+    <br>
+  </div>
+  <div *ngIf="action == 'Eliminar'">
+    <p>
+      Seguro que quiere eliminar <b>{{name}}</b>?
+    </p>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-flat-button class="addButton" (click)="save()">Agregar</button>
+  <button mat-button mat-flat-button class="cancelButton" (click)="close()" color="warn">Cancelar</button>
+</div>
