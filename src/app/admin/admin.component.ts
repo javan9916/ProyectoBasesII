@@ -9,7 +9,7 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  displayedColumns: string[] = ['tamano', 'crecimiento', 'maximo', 'uso', 'action'];
+  displayedColumns: string[] = ['informacion', 'grafica'];
 
   @ViewChild(MatTable) table: MatTable<any>;
 
@@ -35,10 +35,13 @@ export class AdminComponent implements OnInit {
     dialogRef.afterClosed().subscribe(data => {
       console.log("Dialog output:", data)
       if (data != undefined) {
-        if (data.action == 'Editar') {
+        if (data.action == 'Agregar DB') {
           
         }
-        else if (data.action == 'Eliminar') {
+        else if (data.action == 'Agregar Disco') {
+          
+        } 
+        else if (data.action == 'Agregar FG') {
           
         }
       }

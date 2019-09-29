@@ -31,31 +31,24 @@
 
   <mat-card>
     <table mat-table  class="mat-elevation-z8">
-    
-      <!-- Columna Tamaño -->
-      <ng-container matColumnDef="tamano">
-        <th mat-header-cell *matHeaderCellDef> Tamaño </th>
-        <td mat-cell *matCellDef="let element"> {{element.tamano}} </td>
-      </ng-container>
-    
-      <!-- Columna Crecimiento -->
-      <ng-container matColumnDef="crecimiento">
-        <th mat-header-cell *matHeaderCellDef> Crecimiento </th>
-        <td mat-cell *matCellDef="let element"> {{element.crecimiento}} </td>
-      </ng-container>
-    
-      <!-- Columna Tamaño máximo -->
-      <ng-container matColumnDef="maximo">
-        <th mat-header-cell *matHeaderCellDef> Tamaño máximo </th>
-        <td mat-cell *matCellDef="let element"> {{element.maximo}} </td>
-      </ng-container>
-    
-      <!-- Columna Porcentaje de uso -->
-      <ng-container matColumnDef="uso">
-        <th mat-header-cell *matHeaderCellDef> Porcentaje de uso </th>
-        <td mat-cell *matCellDef="let element"> {{element.uso}}% </td>
-      </ng-container>
 
+      <!-- Columna Información -->
+      <ng-container matColumnDef="informacion">
+        <th mat-header-cell *matHeaderCellDef> Discos </th>
+        <td mat-cell *matCellDef="let element"> 
+          {{element.disco}}
+          {{element.tamano}}
+          {{element.crecimiento}}
+          {{element.maximo}}
+          {{element.uso}}% </td>
+      </ng-container>
+        
+      <!-- Columna Gráfica -->
+      <ng-container matColumnDef="grafica">
+        <th mat-header-cell *matHeaderCellDef> Gráfico </th>
+        <td mat-cell *matCellDef="let element">  </td>
+      </ng-container>
+      
       <!-- Columna Acciones -->
       <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef></th>
