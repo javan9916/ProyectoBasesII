@@ -35,6 +35,7 @@ export class LoginService {
       .set('User',data.UserName)
       .set('Password',data.Password)
       .set('Server',data.Server)
+      .set('Port',data.Port)
     });
   }
 }
