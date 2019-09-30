@@ -2,6 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+export interface DB {
+  name: string;
+  id: number;
+}
 
 @Component({
   selector: 'app-admin',
@@ -13,10 +20,26 @@ export class AdminComponent implements OnInit {
 
   @ViewChild(MatTable) table: MatTable<any>;
 
-  constructor(private dialog: MatDialog) { }
+  uri = 'http://localhost:3001';
+
+  databases: DB[];
+  currentDB: string;
+
+  constructor(private dialog: MatDialog, private http: HttpClient) { }
 
   ngOnInit() {
-    
+    this.getDBs();
+  }
+
+  getDBs() {
+    return this.http.get(this.uri + '/BasesDatos/verBasesDatos').subscribe((res) => {
+      console.log(res['content']);
+      this.databases = res['content']
+    });
+  }
+
+  consultarDiscos() {
+    console.log(this.currentDB);
   }
 
   openDialog(action) {

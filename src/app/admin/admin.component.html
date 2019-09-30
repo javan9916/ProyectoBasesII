@@ -4,16 +4,17 @@
     <mat-grid-tile colspan="2" rowspan="1">
       <mat-form-field>
         <mat-label>Bases de datos</mat-label>
-        <mat-select>
-          <mat-option value="bd1">BD 1</mat-option>
-          <mat-option value="bd2">BD 2</mat-option>
-          <mat-option value="bd3">BD 3</mat-option>
-          <mat-option value="bd4">BD 4</mat-option>
-          <mat-option value="bd5">BD 5</mat-option>
+        <mat-select [(ngModel)]="currentDB">
+          <mat-option *ngFor="let db of databases" value="db.name">
+            {{db.name}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <button mat-icon-button color="primary" aria-label="Add button" (click)="openDialog('Agregar BD')">
         <mat-icon>add</mat-icon>
+      </button>
+      <button mat-flat-button color="primary" class="consultaButton" (click)="consultarDiscos()">
+        Consultar
       </button>
     </mat-grid-tile>
     <mat-grid-tile colspan="1" rowspan="1">
