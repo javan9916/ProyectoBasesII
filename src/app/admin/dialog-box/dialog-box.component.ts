@@ -11,10 +11,6 @@ export class DialogBoxComponent implements OnInit {
 
   form: FormGroup;
   nombreBD: string;
-  nombreFG: string;
-  ubicacionFG: string;
-  tamaño: number;
-  crecimiento: number;
   action: string;
 
   constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<DialogBoxComponent>,
@@ -26,10 +22,6 @@ export class DialogBoxComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       nombreBD: [this.nombreBD],
-      nombreFG: [this.nombreFG],
-      ubicacionFG: [this.ubicacionFG],
-      tamaño: [this.tamaño],
-      crecimiento: [this.crecimiento],
       action: [this.action] 
     });
   }

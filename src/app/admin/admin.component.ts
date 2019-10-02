@@ -3,12 +3,12 @@ import { MatTable } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { DatabaseService } from '../shared/database/database.service';
+import { DatabaseInter } from '../modals/databases-inter';
 
-export interface DB {
-  name: string;
-  id: number;
-}
+import { Observable, BehaviorSubject } from 'rxjs';
+import { dataSourceDatabase } from '../shared/database/database.datasource';
+import { LoginService } from '../shared/login/login.service';
 
 @Component({
   selector: 'app-admin',
@@ -17,25 +17,27 @@ export interface DB {
 })
 export class AdminComponent implements OnInit {
   displayedColumns: string[] = ['informacion', 'grafica'];
+  private dbSubject = new BehaviorSubject<DatabaseInter[]>([]);
+
+  dataSource: dataSourceDatabase;
 
   @ViewChild(MatTable) table: MatTable<any>;
 
-  uri = 'http://localhost:3001';
+  currentDB: number;
+  databases: BehaviorSubject<DatabaseInter[]>;
+  
 
-  databases: DB[];
-  currentDB: string;
-
-  constructor(private dialog: MatDialog, private http: HttpClient) { }
+  constructor(private dialog: MatDialog, private dbService: DatabaseService, private loginService: LoginService) { }
 
   ngOnInit() {
+    this.dataSource = new dataSourceDatabase(this.dbService);
     this.getDBs();
   }
 
   getDBs() {
-    return this.http.get(this.uri + '/BasesDatos/verBasesDatos').subscribe((res) => {
-      console.log(res['content']);
-      this.databases = res['content']
-    });
+    this.dataSource.getDB(this.loginService.formLogin.value);
+    this.databases = this.dataSource['subjectDataBases'];
+    console.log(this.databases.value);
   }
 
   consultarDiscos() {
@@ -59,7 +61,7 @@ export class AdminComponent implements OnInit {
       console.log("Dialog output:", data)
       if (data != undefined) {
         if (data.action == 'Agregar DB') {
-          
+          this.addDatabase(data);
         }
         else if (data.action == 'Agregar Disco') {
           
@@ -68,6 +70,12 @@ export class AdminComponent implements OnInit {
           
         }
       }
+    });
+  }
+
+  addDatabase(data) {
+    this.dbService.addDatabase(data, this.loginService.formLogin.value).subscribe (res => {
+      this.dbSubject.next(data);
     });
   }
 
