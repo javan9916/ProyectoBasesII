@@ -5,13 +5,16 @@
       <mat-form-field>
         <mat-label>Bases de datos</mat-label>
         <mat-select [(ngModel)]="currentDB">
-          <mat-option *ngFor="let db of databases.value" value="{{ db.database_id }}">
+          <mat-option *ngFor="let db of dataSource.subjectDataBases.value" [value]="db.database_id">
             {{db.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-icon-button color="primary" aria-label="Add button" (click)="openDialog('Agregar BD')">
+      <button mat-icon-button color="primary" style="margin: 0%" aria-label="Add button" (click)="openDialog('Agregar BD')">
         <mat-icon>add</mat-icon>
+      </button>
+      <button mat-icon-button style="color:green" aria-label="Add button" (click)="getDBs()">
+        <mat-icon>autorenew</mat-icon>
       </button>
       <button mat-flat-button color="primary" class="consultaButton" (click)="consultarDiscos()">
         Consultar

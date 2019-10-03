@@ -21,8 +21,9 @@ export class dataSourceDatabase implements DataSource<DatabaseInter>{
 
     //LLama al servicio de GetDB
     getDB(dataLogin){
-        this.service.getDataBases(dataLogin).subscribe(data => {
-            this.subjectDataBases.next(data['content'])
+        this.service.getDataBases(dataLogin)
+        .subscribe((res) => {
+            this.subjectDataBases.next(res['content'])
         });
     }
 

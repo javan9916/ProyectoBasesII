@@ -24,20 +24,25 @@ export class AdminComponent implements OnInit {
   @ViewChild(MatTable) table: MatTable<any>;
 
   currentDB: number;
-  databases: BehaviorSubject<DatabaseInter[]>;
-  
+  DBs : dataSourceDatabase[];
 
-  constructor(private dialog: MatDialog, private dbService: DatabaseService, private loginService: LoginService) { }
+  constructor(
+    private dialog: MatDialog, 
+    private dbService: DatabaseService, 
+    private loginService: LoginService,
+    ) { }
 
   ngOnInit() {
     this.dataSource = new dataSourceDatabase(this.dbService);
     this.getDBs();
+    console.log(this.dataSource)
   }
 
   getDBs() {
+    console.log("REFRESH");
+    console.log(this.dataSource);
+    console.log(this.loginService.formLogin.value);
     this.dataSource.getDB(this.loginService.formLogin.value);
-    this.databases = this.dataSource['subjectDataBases'];
-    console.log(this.databases.value);
   }
 
   consultarDiscos() {
