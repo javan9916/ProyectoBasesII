@@ -55,10 +55,18 @@ export class AdminComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    dialogConfig.width = '400px';
-    dialogConfig.data = {
-      action: action
-    };
+    if (action == 'Agregar Disco') {
+      dialogConfig.width = '400px';
+      dialogConfig.data = {
+        action: action,
+        database: this.currentDB
+      };
+    } else {
+      dialogConfig.width = '400px';
+      dialogConfig.data = {
+        action: action
+      };
+    }
 
     const dialogRef = this.dialog.open(DialogBoxComponent, dialogConfig);
 
