@@ -1,8 +1,8 @@
 <h1 mat-dialog-title><strong>{{action}}</strong></h1>
-<div mat-dialog-content [formGroup]="form">
+<div mat-dialog-content [formGroup]="dbService.formDataBase">
   <div *ngIf="action == 'Agregar BD'">
     <mat-form-field>
-      <input placeholder="Nombre Base de Datos" matInput formControlName="nombreBD">
+      <input placeholder="Nombre Base de Datos" matInput formControlName="Name">
     </mat-form-field>
     <br>
   </div>

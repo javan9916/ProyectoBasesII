@@ -39,9 +39,11 @@ export class LoginComponent implements OnInit {
     } 
     else {
       console.log('No ha ingresado todos los datos');
+      this.service.inializeFormLogin();
+      this.service.formLogin.reset();
     }
-    this.service.formLogin.reset();
-    this.service.inializeFormLogin();
+    
+    
   }
 
   setResultado(data: boolean){

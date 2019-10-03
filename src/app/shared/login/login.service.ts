@@ -12,10 +12,10 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   formLogin: FormGroup = new FormGroup({
-    UserName: new FormControl('', Validators.required),
-    Password: new FormControl('', Validators.required),
-    Server: new FormControl('', Validators.required),
-    Port: new FormControl('', Validators.required),
+    UserName: new FormControl('sa', Validators.required),
+    Password: new FormControl('24604763', Validators.required),
+    Server: new FormControl('192.168.0.110', Validators.required),
+    Port: new FormControl('1433', Validators.required),
     DataBase: new FormControl(null),
   });
 
@@ -29,6 +29,16 @@ export class LoginService {
     })
   }
 
+  changeDataBase(database, login){
+    this.formLogin.setValue({
+      UserName: login.controls['UserName'].value,
+      Password: login.controls['Password'].value,
+      Server: login.controls['Server'].value,
+      Port: login.controls['Port'].value,
+      DataBase: database.controls['Name'].value
+    })
+  }
+
   doLogin(data){
     return this.http.get(`${this.uri+'/login/login'}`,{
       params: new HttpParams()
@@ -38,4 +48,6 @@ export class LoginService {
       .set('Port',data.Port)
     });
   }
+
+
 }
