@@ -4,11 +4,12 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { DatabaseService } from '../shared/database/database.service';
-import { DatabaseInter } from '../modals/databases-inter';
+import { DatabaseInter } from '../modals/database-inter';
 
 import { Observable, BehaviorSubject } from 'rxjs';
 import { dataSourceDatabase } from '../shared/database/database.datasource';
 import { LoginService } from '../shared/login/login.service';
+import { diskSourceDatabase } from '../shared/database/disk.datasource';
 
 @Component({
   selector: 'app-admin',
@@ -16,15 +17,15 @@ import { LoginService } from '../shared/login/login.service';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  displayedColumns: string[] = ['informacion', 'grafica'];
+  displayedColumns: string[] = ['Disco', 'Cresimiento', 'Tamaño','Tamaño Maximo'];
   private dbSubject = new BehaviorSubject<DatabaseInter[]>([]);
 
   dataSource: dataSourceDatabase;
+  diskDataSource: diskSourceDatabase;
 
   @ViewChild(MatTable) table: MatTable<any>;
 
   currentDB: number;
-  DBs : dataSourceDatabase[];
 
   constructor(
     private dialog: MatDialog, 
@@ -34,8 +35,8 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new dataSourceDatabase(this.dbService);
+    this.diskDataSource = new diskSourceDatabase(this.dbService,this.loginService);
     this.getDBs();
-    console.log(this.dataSource)
   }
 
   getDBs() {
@@ -46,7 +47,10 @@ export class AdminComponent implements OnInit {
   }
 
   consultarDiscos() {
+    console.log("CARGA");
+    console.log(this.diskDataSource);
     console.log(this.currentDB);
+    this.diskDataSource.consultarDiscos(this.currentDB)
   }
 
   openDialog(action) {

@@ -5,7 +5,6 @@ import { loginInter } from '../modals/login-inter';
 
 import { BehaviorSubject } from "rxjs";
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',

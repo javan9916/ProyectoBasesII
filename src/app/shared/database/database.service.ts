@@ -33,15 +33,29 @@ export class DatabaseService {
   }
 
   addDatabase(data, loginData){
-    console.log(data.Name)
+    var puerto: number = +loginData.Port; // puerto: number
     const obj ={
       User: loginData.UserName,
       Password: loginData.Password,
       Server: loginData.Server,
       DataBase: loginData.DataBase,
-      port: loginData.Port,
+      port: puerto,
       Name: data.Name
     };
     return this.http.post(`${this.uri+'/BasesDatos/crearBasesDatos'}`,obj);
+  }
+
+  ShowDisks(id, loginData){
+    var puerto: number = +loginData.Port; // puerto: number
+    var databaseid: number = +id;
+    const obj ={
+      User: loginData.UserName,
+      Password: loginData.Password,
+      Server: loginData.Server,
+      BaseDatos: this.formDataBase.value.Name,
+      port: puerto,
+      id: databaseid
+    };
+    return this.http.post(`${this.uri+'/filegroup/verFileGroup'}`,obj);
   }
 }

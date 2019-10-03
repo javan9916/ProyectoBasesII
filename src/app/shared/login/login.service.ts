@@ -12,10 +12,10 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   formLogin: FormGroup = new FormGroup({
-    UserName: new FormControl('sa', Validators.required),
-    Password: new FormControl('24604763', Validators.required),
-    Server: new FormControl('192.168.0.110', Validators.required),
-    Port: new FormControl('1433', Validators.required),
+    UserName: new FormControl('', Validators.required),
+    Password: new FormControl('', Validators.required),
+    Server: new FormControl('', Validators.required),
+    Port: new FormControl('', Validators.required),
     DataBase: new FormControl(null),
   });
 
