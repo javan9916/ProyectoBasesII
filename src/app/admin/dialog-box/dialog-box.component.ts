@@ -13,15 +13,22 @@ export class DialogBoxComponent implements OnInit {
 
   form: FormGroup;
   nombreBD: string;
+  database: number;
+  tamaño: number;
+  crecimiento: number;
+  tMaximo: number;
+  uso: number;
   action: string;
 
-  constructor(
-    private fb: FormBuilder,
+  constructor(private fb: FormBuilder,
     private dbService: DatabaseService, 
     private loginService: LoginService,
     private dialogRef: MatDialogRef<DialogBoxComponent>,
     @Inject(MAT_DIALOG_DATA) data, public dialog: MatDialog) { 
 
+      if (data.action == 'Agregar Disco') {
+        this.database = data.database;
+      }
       this.action = data.action;
     }
 

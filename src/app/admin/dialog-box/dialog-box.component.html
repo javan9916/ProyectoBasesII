@@ -6,6 +6,20 @@
     </mat-form-field>
     <br>
   </div>
+  <div *ngIf="action == 'Agregar Disco'">
+    <mat-form-field>
+      <input placeholder="Tamaño del disco" matInput formControlName="tamaño">
+    </mat-form-field>
+    <mat-form-field>
+      <input placeholder="Crecimiento del disco" matInput formControlName="crecimiento">
+    </mat-form-field>
+    <mat-form-field>
+      <input placeholder="Tamaño máximo" matInput formControlName="tMaximo">
+    </mat-form-field>
+    <mat-form-field>
+      <input placeholder="Porcentaje de uso" matInput formControlName="uso">
+    </mat-form-field>
+  </div>
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-flat-button class="addButton" (click)="save()">Agregar</button>
