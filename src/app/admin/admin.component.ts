@@ -37,7 +37,7 @@ export class AdminComponent implements OnInit {
   getDBs() {
     this.dataSource.getDB(this.loginService.formLogin.value);
     this.databases = this.dataSource['subjectDataBases'];
-    console.log(this.databases.value);
+    console.log(this.dataSource);
   }
 
   consultarDiscos() {
